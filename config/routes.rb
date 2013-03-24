@@ -1,4 +1,14 @@
 TrueLoser::Application.routes.draw do
+
+  scope moudle: 'user' do 
+    resources :posts
+  end
+
+  root to: 'posts#index'
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
