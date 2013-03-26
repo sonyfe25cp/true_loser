@@ -1,1 +1,9 @@
-hello world posts_index
+-@posts.each  do |post|
+  %div.post
+    %dl.user
+      sonyfe25cp
+    %dl.content
+      =post.content
+    %dl.options
+      %button.btn.btn-danger 参战
+      %button.btn.btn-info 评论

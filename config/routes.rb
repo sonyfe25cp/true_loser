@@ -1,10 +1,19 @@
 TrueLoser::Application.routes.draw do
+  devise_for :admins, :class_name => "Admin::Admin"
 
-  scope moudle: 'user' do 
+  devise_for :users, :class_name => "User::User", :controllers => {
+    :registrations => "registrations"#,
+   # :omniauth_callbacks => "user/omniauth_callbacks"
+  }
+
+  scope :module => 'user' do
     resources :posts
   end
 
-  root to: 'posts#index'
+  match 'contact' => 'common#contact'
+  match 'about' => 'common#about'
+
+  root :to => 'posts#index'
 
 
 

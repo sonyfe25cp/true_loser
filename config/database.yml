@@ -1,7 +1,7 @@
 defaults: &defaults
   adapter: mysql
   user: root
-  password: 
+  password:
   host: localhost
 
 test:
