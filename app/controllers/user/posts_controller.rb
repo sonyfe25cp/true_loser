@@ -1,6 +1,6 @@
 class User::PostsController < User::BaseController
   def index
-    @posts = Post.page(params[:page]).per(params[:limit])
+    @posts = Post.all(:order => [:id.desc]).page(params[:page]).per(params[:limit])
     respond_to do |format|
       format.html
     end
@@ -15,6 +15,19 @@ class User::PostsController < User::BaseController
   end
 
   def new
+    @post = Post.new
+  end
 
+  def create
+    binding.pry
+    post = Post.new(params[:post])
+
+    respond_to do |format|
+      if post.save
+        format.html
+      else
+        redirect_to posts_path
+      end
+    end
   end
 end

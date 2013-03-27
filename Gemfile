@@ -76,6 +76,7 @@ gem 'settingslogic'
 gem 'devise-encryptable'
 gem 'newrelic_rpm'
 gem 'less-rails'
+gem 'flatui-rails'
 
 group :development, :test do
   gem 'rspec-rails'

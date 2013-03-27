@@ -12,6 +12,7 @@ TrueLoser::Application.routes.draw do
 
   match 'contact' => 'common#contact'
   match 'about' => 'common#about'
+  match 'test' => 'common#test'
 
   root :to => 'posts#index'
 
