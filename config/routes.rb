@@ -8,13 +8,14 @@ TrueLoser::Application.routes.draw do
 
   scope :module => 'user' do
     resources :posts
+    resources :comments
   end
 
   match 'contact' => 'common#contact'
   match 'about' => 'common#about'
   match 'test' => 'common#test'
 
-  root :to => 'posts#index'
+  root :to => 'user/posts#index'
 
 
 

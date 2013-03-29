@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 class User::PostsController < User::BaseController
   def index
     @posts = Post.all(:order => [:id.desc]).page(params[:page]).per(params[:limit])
@@ -19,7 +20,6 @@ class User::PostsController < User::BaseController
   end
 
   def create
-    binding.pry
     post = Post.new(params[:post])
 
     respond_to do |format|
@@ -30,4 +30,16 @@ class User::PostsController < User::BaseController
       end
     end
   end
+
+  def review
+    status = params[:status]
+    post_id = params[:post_id]
+    post = Post.get(post_id)
+
+    post.status = status
+
+    post.update(:status => status)
+
+  end
+
 end

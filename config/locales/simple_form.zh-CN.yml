@@ -21,20 +21,12 @@
         password_confirmation: '密码确认'
         realname: '姓名'
         address: '地址'
-        area_code: '区域'
         phone: '手机'
         comment: '备注'
         current_password: '旧密码'
-        agent_name: '代理姓名'
-        agent_address: '代理地址'
-        agent_phone: '代理手机号'
-        content: '意见'
+        content: '惨状'
         id: 'ID'
-        money: '金额'
         status: '状态'
-        printer_name: '打印店'
-        printer_address: '地址'
-        printer_phone: '手机'
 
     # hints:
     #   defaults:
