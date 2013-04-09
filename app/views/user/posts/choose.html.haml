@@ -1,0 +1,17 @@
+-if @post
+  .post
+    %dl.content
+      =raw @post.content
+    %dl.options
+      =link_to '战斗里只有0.5的渣渣', judge_post_path(@post)+"?status=delete", :class =>'btn btn-danger'
+      =link_to '你这故事真的好惨啊!', judge_post_path(@post)+"?status=ok", :class =>'btn btn-warning'
+-else
+  .post
+    %p
+      已经没有故事了。。。这是一个充满爱的世界。。。
+    %p
+      什么？！你还有个悲惨的故事没有讲出来？
+    %p
+      快点写下来，让我们来鉴定一下吧！
+    %p
+      =link_to '我要去写个悲惨的故事', new_post_path

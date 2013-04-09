@@ -1,0 +1,18 @@
+.logo{
+  color: white;
+}
+.navbar .nav .header{
+  display: table;
+}
+li .header{
+  width: 170px;
+}
+.pull-right {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.welcome{
+  margin-right: 5px;
+  font-size: 17px;
+  margin-top: 5px;
+}

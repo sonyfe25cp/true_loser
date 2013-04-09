@@ -8,8 +8,32 @@
       %a.brand(href="/") 来比惨!
       .container.nav-collapse
         %ul.nav
-          %li= link_to '比惨', '/pk'
-          %li= link_to '参战', '/join'
+          %li= link_to '比惨', '/bican'
           %li= link_to '海选', '/choose'
-          %li= link_to '意见', '/faq'
           %li= link_to '投稿', new_post_path
+          %li= link_to '奖励', '/surprise'
+        .pull-right
+          -if @current_resource == nil
+            =link_to image_tag('weibo_login.png'), user_omniauth_authorize_path(:weibo)
+          -else
+            .welcome
+              欢迎
+              =@current_resource.username
+
+          /=link_to image_tag('renren_login.png'), '#renren'
+
+/.masthead
+/  %h3.muted.logo
+/    来比惨，感受正能量！
+/  .navbar
+/    .navbar-inner
+/      .container
+/        %ul.nav
+/          %li.header= link_to '来比惨', root_path
+/          %li.header= link_to '参战', '/join'
+/          %li.header= link_to '海选', '/gamble'
+/          %li= link_to '意见', '/faq'
+/          %li= link_to '投稿', new_post_path
+
+
+

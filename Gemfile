@@ -77,6 +77,7 @@ gem 'devise-encryptable'
 gem 'newrelic_rpm'
 gem 'less-rails'
 gem 'flatui-rails'
+gem 'rails_kindeditor', '~> 0.3.14'
 
 group :development, :test do
   gem 'rspec-rails'

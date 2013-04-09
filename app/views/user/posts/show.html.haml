@@ -1,9 +1,28 @@
-%div.post
+.post
   %dl.user
-    %img{src: 'http://www.gravatar.com/avatar/b417c896d2bcdeee7823fd8f1afc1b16.png'}
-    sonyfe25cp
+    -if post.user_img
+      %img{src: post.user_img }
+      =post.username
   %dl.content
-    =@post.content
+    =raw @post.content
   %dl.options
     %a.momo.btn.btn-warning momo
     %a.pk.btn.btn-danger 参战
+
+.comments
+  -@comments.each  do |comment|
+    .comment
+      =image_tag(comment.user_img)
+      =link_to comment.username, comment.user_weibo, :target => '_blank'
+      说:
+      =comment.content
+
+-if current_user
+  %form{:action => comments_path, :method => 'post'}
+    %input{:name => 'content'}
+    %input.hidden{:name => 'user_id', :value => current_user == nil ? '1' : current_user.id}
+    %input.hidden{:name => 'post_id', :value => @post.id}
+    %button{:type => 'submit'} 评论
+-else
+  %p
+    登陆后可以参与评论哦~

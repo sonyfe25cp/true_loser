@@ -70,6 +70,8 @@ class User::User
   property :address, String
   property :phone, String
   property :promised, Boolean, default: false
+  property :user_img, String
+  property :user_weibo, String
 
 
   validates_with_block :promised do
@@ -104,7 +106,8 @@ class User::User
 
     unless user
       user = User::User.create!(username: data["name"],
-                         #email: data["email"],#这就是别的网站都需要再次注册的根本原因，没有邮箱信息
+                         user_img: data['image'],
+                         user_weibo: data['urls']['Weibo'],
                          email: data['name'] + '@example.com',
                          password: Devise.friendly_token[0,20],
                          promised: true

@@ -11,8 +11,12 @@ class User::CommentsController < User::BaseController
   end
 
   def create
-    comment = Comment.new(params[:comment])
+    comment = Comment.new(:content => params[:content], :user_id => params[:user_id], :post_id => params[:post_id])
+    user = User::User.get(params[:user_id])
+    comment.user_img = user.user_img
+    comment.username = user.username
+    comment.user_weibo = user.user_weibo
     comment.save
-    redirect_to posts_path(params[:comment][:post_id])
+    redirect_to post_path(params[:post_id])
   end
 end

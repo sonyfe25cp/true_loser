@@ -11,3 +11,14 @@ body{
   background-color: #1ABC9C;
 }
 
+.navbar-inner .larger{
+  height: 100px;
+}
+
+.footer{
+  position: relative;
+  margin-top: 20px;
+  background-color: #ECEFF1;
+}
+.footer-banner{
+}

@@ -2,18 +2,27 @@ TrueLoser::Application.routes.draw do
   devise_for :admins, :class_name => "Admin::Admin"
 
   devise_for :users, :class_name => "User::User", :controllers => {
-    :registrations => "registrations"#,
-   # :omniauth_callbacks => "user/omniauth_callbacks"
+    :registrations => "registrations",
+    :omniauth_callbacks => "user/omniauth_callbacks"
   }
 
   scope :module => 'user' do
-    resources :posts
+    resources :posts do
+      get :judge, on: :member
+      get :pknew, on: :member
+      get :win, on: :member
+      post :pk, on: :collection
+    end
     resources :comments
   end
 
   match 'contact' => 'common#contact'
   match 'about' => 'common#about'
   match 'test' => 'common#test'
+  match 'surprise' => 'common#surprise'
+  match 'bican' => 'user/posts#bican'
+
+  match 'choose' => 'user/posts#choose'
 
   root :to => 'user/posts#index'
 

@@ -11,15 +11,10 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "user" , :media => "all"
   %body{ 'data-spy' => 'scroll', 'data-target' => '.price-sidebar' }
+
     %div.container.main
       = render_cell :header, :show, current_resource: current_user
-      %div.container-fluid.clear
-        %div.row-fluid
-          %div.span9
-            =yield
-          %idv.span3
-            ad
-
+      =yield
 
     = render_cell :footer, :show
     = yield(:javascript) if content_for?(:javascript)

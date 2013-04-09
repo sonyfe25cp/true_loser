@@ -7,7 +7,13 @@ class Post
   property :content, Text
   property :created_at, DateTime, default: Time.new
 
+  property :username, String
+  property :user_img, String
+
+
   property :status, Enum[:new, :ok, :delete], default: :new
+
+  property :momo_count, Integer, default: 0
 
   has n, :comments
   has n, :taggings

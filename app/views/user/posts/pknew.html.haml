@@ -1,0 +1,17 @@
+/=simple_form_for @post do |f|
+%form{:action => pk_posts_path, :method => 'post'}
+  .row
+    .span3
+      %div.post-icon
+        %img.post-img{src: 'http://www.gravatar.com/avatar/b417c896d2bcdeee7823fd8f1afc1b16.png'}
+          %p 欢迎来比惨！
+    .span9
+      %div.post-form
+        %input{:name => 'base_id', :value => @base.id, :type => 'hidden'}
+        %div.new-control-group
+          /=f.kindeditor :content, :window_onload => true, :simple_mode => true
+          /%kindeditor :content, :window_onload => true, :simple_mode => true
+          =kindeditor_tag :content, '', :simple_mode => true, :window_onload => true
+
+        %div.new-control-group
+          %button.btn.btn-large.btn-post{:type => 'submit'} 我好惨啊!

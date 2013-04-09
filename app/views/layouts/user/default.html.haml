@@ -12,15 +12,13 @@
     = stylesheet_link_tag "user" , :media => "all"
   %body{ 'data-spy' => 'scroll', 'data-target' => '.price-sidebar' }
 
-    = render_cell :header, :show, current_resource: current_user
-
-    /%div.container-fluid
     %div.container.main
+      = render_cell :header, :show, current_resource: current_user
       %div.row-fluid
-        %div.span10
+        %div.span9
           =yield
-        %idv.span2
-          ad
+        %div.span3
+          = render_cell :sider, :show, current_resource: current_user
 
-      = render_cell :footer, :show
-      = yield(:javascript) if content_for?(:javascript)
+    = render_cell :footer, :show
+    = yield(:javascript) if content_for?(:javascript)

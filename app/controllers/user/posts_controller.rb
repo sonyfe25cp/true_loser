@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 class User::PostsController < User::BaseController
   def index
-    @posts = Post.all(:order => [:id.desc]).page(params[:page]).per(params[:limit])
+    @posts = Post.all(:order => [:id.desc]).search('status' => :ok).page(params[:page]).per(params[:limit])
     respond_to do |format|
       format.html
     end
@@ -9,6 +9,8 @@ class User::PostsController < User::BaseController
 
   def show
     @post = Post.get(params[:id])
+    @comments = Comment.search(:post_id => @post.id)
+    @comment = Comment.new
     respond_to do |format|
       format.html
       format.json {render json: @post}
@@ -21,24 +23,66 @@ class User::PostsController < User::BaseController
 
   def create
     post = Post.new(params[:post])
-
-    respond_to do |format|
-      if post.save
-        format.html
-      else
-        redirect_to posts_path
-      end
+    if current_user
+      post.username = current_user.username
+      post.user_img = current_user.user_img
+    end
+    if post.save
+      redirect_to posts_path
+    else
+      redirect_to posts_path
     end
   end
 
-  def review
+  #随机出一个
+  def choose
+    @post = Post.search('status' => :new).sample
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @post}
+    end
+
+  end
+
+  #海选
+  def judge
     status = params[:status]
-    post_id = params[:post_id]
+    post_id = params[:id]
     post = Post.get(post_id)
+    post.update(:status => status.to_sym)
+    redirect_to  choose_path
+  end
 
-    post.status = status
+  def pknew
+    @base = Post.get(params[:id])
+    @post = Post.new
 
-    post.update(:status => status)
+  end
+  #挑战某一个
+  def pk
+    base_id = params[:base_id]
+    post = Post.create(:content => params[:content])
+    if current_user
+      post.username = current_user.username
+      post.user_img = current_user.user_img
+    end
+    post.save
+
+    Pair.create(:base_id => base_id, :pk_id => post.id)
+    redirect_to root_path
+
+  end
+
+  def win
+
+
+  end
+
+  def bican
+    pair = Pair.all.sample
+    @postA = Post.get(pair.base_id)
+    @postB = Post.get(pair.pk_id)
 
   end
 
