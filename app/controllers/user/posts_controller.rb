@@ -81,8 +81,13 @@ class User::PostsController < User::BaseController
 
   def bican
     pair = Pair.all.sample
-    @postA = Post.get(pair.base_id)
-    @postB = Post.get(pair.pk_id)
+    if pair != nil
+      @postA = Post.get(pair.base_id)
+      @postB = Post.get(pair.pk_id)
+    else
+      @postA = nil
+      @postB = nil
+    end
 
   end
 

@@ -1,10 +1,13 @@
-.row-fluid
-  .span5
-    =raw @postA.content
-    %p
-      %a 擂主赢了!
-  .span5
-    =raw @postB.content
-    %p
-      %a 挑战者获胜!
+-if @postA != nil
+  .row-fluid
+    .span5
+      =raw @postA.content
+      %p
+        %a 擂主赢了!
+    .span5
+      =raw @postB.content
+      %p
+        %a 挑战者获胜!
+-else
+  目前没有人挑战比惨噢，快去找一个弱货挑战吧！！少年！
 
