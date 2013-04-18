@@ -27,6 +27,7 @@ class User::PostsController < User::BaseController
       post.username = current_user.username
       post.user_img = current_user.user_img
     end
+    binding.pry
     if post.save
       redirect_to posts_path
     else

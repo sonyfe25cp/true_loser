@@ -1,13 +1,17 @@
 =simple_form_for @post do |f|
   .row
     .span3
-      %div.post-icon
+      .post-icon
         %img.post-img{src: 'http://www.gravatar.com/avatar/b417c896d2bcdeee7823fd8f1afc1b16.png'}
           %p 欢迎来比惨！
     .span9
-      %div.post-form
-        %div.new-control-group
+      .post-form
+        .new-control-group
           =f.kindeditor :content, :window_onload => true, :simple_mode => true
-          /%textarea.post-content{:placeholder => '描述下您的惨状', :id => "post-content", :name => "content"}
-        %div.new-control-group
+        .new-control-group
+          =f.label '为您的惨剧添加个标签吧'
+          =f.text_field :label_list, value: ""
+          =f.hint '标签请用,分隔'
+
+        .new-control-group
           %button.btn.btn-large.btn-post{:type => 'submit'} 我好惨啊!

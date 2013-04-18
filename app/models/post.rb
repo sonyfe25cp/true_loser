@@ -16,8 +16,8 @@ class Post
   property :momo_count, Integer, default: 0
 
   has n, :comments
-  has n, :taggings
-  has n, :tags, :through => :taggings
+
+  has_tags_on :labels
 
 
 end
