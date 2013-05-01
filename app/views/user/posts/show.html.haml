@@ -1,13 +1,17 @@
 .post
   %dl.user
-    -if post.user_img
-      %img{src: post.user_img }
-      =post.username
+    -if @post.user_img
+      %img{src: @post.user_img }
+      =@post.username
   %dl.content
     =raw @post.content
+  %dl.labels
+    -@post.labels.each do |label|
+      .post-label
+        =label.name
   %dl.options
-    %a.momo.btn.btn-warning momo
-    %a.pk.btn.btn-danger 参战
+    %a.momo.btn.btn-warning 亲，不哭！
+    %a.pk.btn.btn-danger 切，一点都不惨!
 
 .comments
   -@comments.each  do |comment|

@@ -27,7 +27,6 @@ class User::PostsController < User::BaseController
       post.username = current_user.username
       post.user_img = current_user.user_img
     end
-    binding.pry
     if post.save
       redirect_to posts_path
     else
@@ -75,11 +74,12 @@ class User::PostsController < User::BaseController
 
   end
 
+  #记录两个比惨的post的胜负记录
   def win
-
 
   end
 
+  #挑选出两个post进行比惨
   def bican
     pair = Pair.all.sample
     if pair != nil
@@ -89,7 +89,6 @@ class User::PostsController < User::BaseController
       @postA = nil
       @postB = nil
     end
-
   end
 
 end

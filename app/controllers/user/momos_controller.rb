@@ -8,4 +8,9 @@ class User::MomosController < User::BaseController
     momo.save
 
   end
+
+  #获得某个post的momo数
+  def count
+
+  end
 end

@@ -32,6 +32,10 @@
 .post .options .comment{
   float:right;
 }
+.post .options .share{
+  float:right;
+  margin-right: 20px;
+}
 li {
   list-style: none;
 }

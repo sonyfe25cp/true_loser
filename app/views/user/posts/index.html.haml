@@ -7,8 +7,16 @@
           =post.username
       %dl.content
         =raw post.content
+      %dl.labels
+        标签:
+        -post.labels.each do |label|
+          .post-label
+            =label.name
       %dl.options
         %a.momo.btn.btn-warning
-          momo 
+          真可怜
         =link_to '挑战', pknew_post_path(post.id), class: 'pk btn btn-danger'
         =link_to '评论', post_path(post.id), class: 'comment btn btn-info'
+        %a.share.btn.btn-info
+          分享
+

@@ -19,5 +19,4 @@ class Post
 
   has_tags_on :labels
 
-
 end
